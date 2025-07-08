@@ -1,0 +1,148 @@
+# kv/login_screen.kv
+
+<LoginScreen>:
+    name: 'login' # Define o nome da tela para o ScreenManager
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(15)
+        canvas.before:
+            Color:
+                # Tons de azul para uma sensação de "start/novo"
+                rgba: 0.1, 0.35, 0.55, 1 # Azul escuro/petróleo
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Espaço flexível para centralizar o conteúdo verticalmente
+        Widget:
+            size_hint_y: 0.3
+
+        Image:
+            source: 'assets/images/app_icon.png' # Caminho para o logo
+            size_hint: None, None
+            size: dp(180), dp(120)
+            pos_hint: {'center_x': 0.5}
+            allow_stretch: True
+            keep_ratio: True
+            # Certifique-se de que a imagem tenha um fundo transparente (PNG)
+
+        Label:
+            text: 'Bem-vindo(a) ao Biogás nas Escolas!'
+            font_size: '22sp'
+            size_hint_y: None
+            height: dp(60)
+            color: 1, 1, 1, 1 # Texto branco
+            halign: 'center'
+            valign: 'middle'
+            text_size: self.size # Garante que o texto se ajuste ao tamanho do Label
+
+        TextInput:
+            id: user_input
+            hint_text: 'Usuário ou Email'
+            size_hint_y: None
+            height: dp(45)
+            multiline: False
+            background_color: 1, 1, 1, 0.9 # Fundo quase branco
+            foreground_color: 0.1, 0.1, 0.1, 1 # Texto escuro
+            padding: [dp(10), dp(10), dp(10), dp(10)]
+            font_size: '16sp'
+
+        TextInput:
+            id: pass_input
+            hint_text: 'Senha'
+            password: True # Esconde a senha
+            size_hint_y: None
+            height: dp(45)
+            multiline: False
+            background_color: 1, 1, 1, 0.9
+            foreground_color: 0.1, 0.1, 0.1, 1
+            padding: [dp(10), dp(10), dp(10), dp(10)]
+            font_size: '16sp'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(55)
+            spacing: dp(10)
+
+            Button:
+                text: 'Criar Conta'
+                on_release: root.create_account() # Chama o método create_account na classe LoginScreen
+                background_normal: ''
+                background_color: 0.2, 0.6, 0.5, 1 # Verde mais claro para "Criar Conta"
+                color: 1, 1, 1, 1
+                font_size: '17sp'
+
+            Button:
+                text: 'Entrar'
+                on_release: root.login() # Chama o método login na classe LoginScreen
+                background_normal: ''
+                background_color: 0.1, 0.45, 0.35, 1 # Verde mais escuro para "Entrar"
+                color: 1, 1, 1, 1
+                font_size: '17sp'
+
+        # Espaço flexível para empurrar o conteúdo para cima, mantendo o logo visível
+        Widget:
+            size_hint_y: 0.2
+
+        # Barra de navegação inferior (exemplo simples com botões, pode ser em uma classe RootWidget pai)
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(60)
+            padding: dp(5)
+            spacing: dp(5)
+            pos_hint: {'center_x': 0.5} # Centraliza a barra
+
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.15, 1 # Fundo da barra de navegação
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Button:
+                text: 'Início'
+                on_release: app.root.current = 'login' # Volta para login ou tela inicial real
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Registrar'
+                on_release: app.root.current = 'register_waste'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Estatísticas'
+                on_release: app.root.current = 'biogas_estimation'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Relatórios' # Nomeando diferente para refletir ReportsScreen
+                on_release: app.root.current = 'reports'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            # Mídia e Configurações seriam outras telas
+            Button:
+                text: 'Mídia'
+                on_release: root.show_popup('Em Breve', 'A tela de mídia está em desenvolvimento!')
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Configurações'
+                on_release: root.show_popup('Em Breve', 'A tela de configurações está em desenvolvimento!')
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'

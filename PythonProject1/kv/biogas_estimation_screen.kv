@@ -1,0 +1,151 @@
+# kv/biogas_estimation_screen.kv
+
+<BiogasEstimationScreen>:
+    name: 'biogas_estimation'
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(15)
+        canvas.before:
+            Color:
+                # Azul para a temática de biogás/energia
+                rgba: 0.1, 0.4, 0.6, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'Estimativa de Biogás'
+            font_size: '26sp'
+            size_hint_y: None
+            height: dp(60)
+            color: 1, 1, 1, 1
+            halign: 'center'
+            valign: 'middle'
+            text_size: self.size
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.6
+            spacing: dp(10)
+            padding: dp(10)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 0.1 # Fundo levemente transparente
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: 'Produção Estimada de Biogás:'
+                font_size: '18sp'
+                color: 1, 1, 1, 1
+                halign: 'left'
+                text_size: self.width - dp(20), None # Ajusta para o padding
+
+            Label:
+                id: biogas_output
+                text: '0.00 m³' # Valor inicial
+                font_size: '40sp'
+                bold: True
+                color: 0.8, 1, 1, 1 # Azul claro brilhante
+                size_hint_y: None
+                height: dp(80)
+
+            # Representação visual do tanque de biogás
+            RelativeLayout:
+                size_hint_y: 0.5
+                id: biogas_level_container
+                canvas:
+                    # Desenha o contorno do tanque
+                    Color:
+                        rgba: 0.2, 0.5, 0.8, 1
+                    Line:
+                        rectangle: self.x + dp(40), self.y + dp(10), self.width - dp(80), self.height - dp(20)
+                        width: 2
+                    # Preenchimento do nível de biogás (este será atualizado via Python)
+                    Color:
+                        rgba: 0.4, 0.7, 0.9, 0.7
+                    Rectangle:
+                        id: biogas_level_indicator
+                        pos: self.x + dp(40), self.y + dp(10)
+                        size: self.width - dp(80), (self.height - dp(20)) * 0.0 # Começa vazio
+
+            Label:
+                text: 'Gases de Efeito Estufa Evitados:'
+                font_size: '18sp'
+                color: 1, 1, 1, 1
+                halign: 'left'
+                text_size: self.width - dp(20), None
+
+            Label:
+                id: ghg_output
+                text: '0.00 kg CO2eq' # Valor inicial
+                font_size: '40sp'
+                bold: True
+                color: 0.8, 1, 0.8, 1 # Verde claro para GEE
+                size_hint_y: None
+                height: dp(80)
+
+        Widget: # Espaçador
+            size_hint_y: 0.1
+
+        # Barra de navegação inferior
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(60)
+            padding: dp(5)
+            spacing: dp(5)
+            pos_hint: {'center_x': 0.5}
+
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.15, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Button:
+                text: 'Início'
+                on_release: app.root.current = 'login'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Registrar'
+                on_release: app.root.current = 'register_waste'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Estatísticas'
+                on_release: app.root.current = 'biogas_estimation'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 0.8, 1, 0.8, 1 # Cor de destaque para tela ativa
+                font_size: '12sp'
+            Button:
+                text: 'Relatórios'
+                on_release: app.root.current = 'reports'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Mídia'
+                on_release: root.show_popup('Em Breve', 'A tela de mídia está em desenvolvimento!')
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Configurações'
+                on_release: root.show_popup('Em Breve', 'A tela de configurações está em desenvolvimento!')
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'

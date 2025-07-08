@@ -1,0 +1,151 @@
+# kv/reports_screen.kv
+
+<ReportsScreen>:
+    name: 'reports'
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(15)
+        canvas.before:
+            Color:
+                # Fundo neutro e claro para a seção de relatórios
+                rgba: 0.9, 0.9, 0.9, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'Meus Relatórios e Gráficos'
+            font_size: '26sp'
+            size_hint_y: None
+            height: dp(60)
+            color: 0.1, 0.1, 0.1, 1
+            halign: 'center'
+            valign: 'middle'
+            text_size: self.size
+
+        Label:
+            text: '[b]Registros de Descarte Recentes:[/b]'
+            halign: 'left'
+            text_size: self.width - dp(40), None # Ajusta para padding do pai
+            size_hint_y: None
+            height: dp(30)
+            font_size: '18sp'
+            color: 0.2, 0.2, 0.2, 1
+            markup: True # Habilita formatação (negrito)
+
+        ScrollView: # Permite rolagem se houver muitos registros
+            size_hint_y: 0.4 # Ocupa 40% da altura para a lista de registros
+            BoxLayout:
+                id: waste_records_list # ID para acessar no Python e adicionar widgets
+                orientation: 'vertical'
+                size_hint_y: None # Importante para que o BoxLayout interno se ajuste ao conteúdo
+                height: self.minimum_height # Altura mínima baseada no conteúdo
+                spacing: dp(5)
+                padding: dp(10)
+                # Os Labels com os registros serão adicionados aqui via Python
+                # Exemplo de como um Label apareceria:
+                # Label:
+                #    text: '2025-07-08 | Frutas | 1.5 kg'
+                #    halign: 'left'
+                #    text_size: self.width, None
+                #    size_hint_y: None
+                #    height: dp(25)
+                #    color: 0.3, 0.3, 0.3, 1
+
+        Label:
+            text: '[b]Gráfico de Tendência de Biogás:[/b]'
+            halign: 'left'
+            text_size: self.width - dp(40), None
+            size_hint_y: None
+            height: dp(30)
+            font_size: '18sp'
+            color: 0.2, 0.2, 0.2, 1
+            markup: True
+
+        # Placeholder para o Gráfico (se você usar kivy_garden.graph)
+        # Lembre-se de importar Graph em main.py e definir os plots lá.
+        Widget:
+            size_hint_y: 0.3 # Ocupa 30% da altura para o gráfico
+            canvas:
+                Color:
+                    rgba: 0.7, 0.7, 0.7, 1 # Cor para simular a área do gráfico
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1
+                Line:
+                    points: self.x, self.y + self.height/2, self.x + self.width, self.y + self.height/2 # Linha horizontal
+                    width: 1
+                Line:
+                    points: self.x + self.width/2, self.y, self.x + self.width/2, self.y + self.height # Linha vertical
+                    width: 1
+            Label:
+                text: 'Gráfico de Tendência Aqui'
+                color: 0.4, 0.4, 0.4, 1
+                font_size: '14sp'
+                center: self.parent.center
+
+        Widget: # Espaçador
+            size_hint_y: 0.05
+
+        # Barra de navegação inferior
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(60)
+            padding: dp(5)
+            spacing: dp(5)
+            pos_hint: {'center_x': 0.5}
+
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.15, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Button:
+                text: 'Início'
+                on_release: app.root.current = 'login'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Registrar'
+                on_release: app.root.current = 'register_waste'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Estatísticas'
+                on_release: app.root.current = 'biogas_estimation'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Relatórios'
+                on_release: app.root.current = 'reports'
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 0.8, 1, 0.8, 1 # Cor de destaque para tela ativa
+                font_size: '12sp'
+            Button:
+                text: 'Mídia'
+                on_release: root.show_popup('Em Breve', 'A tela de mídia está em desenvolvimento!')
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'
+            Button:
+                text: 'Configurações'
+                on_release: root.show_popup('Em Breve', 'A tela de configurações está em desenvolvimento!')
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                font_size: '12sp'

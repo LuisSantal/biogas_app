@@ -1,0 +1,43 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python/
+env/
+.venv/
+bin/
+lib/
+include/
+share/
+*/venv/
+*.egg-info/
+.coverage
+.pytest_cache/
+.tox/
+dist/
+build/
+*.so
+*.dylib
+*.dll
+*.log
+
+# Kivy / Buildozer
+*.kv.py
+.buildozer/
+*.apk
+*.ipa
+*.exe
+*.zip
+*.tar.gz
+*.dmg
+*.spec # buildozer.spec - Opcional, se você quiser versionar as configurações do buildozer
+        # Geralmente é bom versionar, mas se houver dados sensíveis, pode ser ignorado.
+
+# Banco de Dados
+*.db # Ignora todos os arquivos .db, incluindo biogas_app.db
+
+# Mídia gerada pelo app
+media/
