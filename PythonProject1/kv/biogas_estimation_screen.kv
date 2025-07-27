@@ -1,4 +1,4 @@
-# kv/biogas_estimation_screen.kv
+#:kivy 1.11.1
 
 <BiogasEstimationScreen>:
     name: 'biogas_estimation'
@@ -91,61 +91,10 @@
         Widget: # Espaçador
             size_hint_y: 0.1
 
-        # Barra de navegação inferior
-        BoxLayout:
-            orientation: 'horizontal'
+        # --- Botão para Voltar ao Menu Principal (NOVO) ---
+        Button:
+            text: 'Voltar ao Menu Principal'
             size_hint_y: None
-            height: dp(60)
-            padding: dp(5)
-            spacing: dp(5)
-            pos_hint: {'center_x': 0.5}
-
-            canvas.before:
-                Color:
-                    rgba: 0.15, 0.15, 0.15, 1
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-
-            Button:
-                text: 'Início'
-                on_release: app.root.current = 'login'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Registrar'
-                on_release: app.root.current = 'register_waste'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Estatísticas'
-                on_release: app.root.current = 'biogas_estimation'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 0.8, 1, 0.8, 1 # Cor de destaque para tela ativa
-                font_size: '12sp'
-            Button:
-                text: 'Relatórios'
-                on_release: app.root.current = 'reports'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Mídia'
-                on_release: root.show_popup('Em Breve', 'A tela de mídia está em desenvolvimento!')
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Configurações'
-                on_release: root.show_popup('Em Breve', 'A tela de configurações está em desenvolvimento!')
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
+            height: dp(50)
+            on_release: app.root.current = 'main_menu' # Aponta para o novo menu
+            background_color: 0.7, 0.2, 0.2, 1 # Cor vermelha para o botão de voltar

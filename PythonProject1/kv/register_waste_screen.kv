@@ -1,165 +1,71 @@
-# kv/register_waste_screen.kv
+#:kivy 1.11.1
 
 <RegisterWasteScreen>:
     name: 'register_waste'
-
     BoxLayout:
         orientation: 'vertical'
         padding: dp(20)
-        spacing: dp(15)
-        canvas.before:
-            Color:
-                # Cor verde terrosa para a temática de resíduos/compostagem
-                rgba: 0.3, 0.5, 0.2, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        spacing: dp(10)
 
         Label:
-            text: 'Registrar Descarte'
-            font_size: '26sp'
+            text: 'Registro de Descarte de Resíduos Orgânicos'
+            font_size: '20sp'
             size_hint_y: None
-            height: dp(60)
-            color: 1, 1, 1, 1
-            halign: 'center'
-            valign: 'middle'
-            text_size: self.size
+            height: dp(50)
+            color: 0.1, 0.5, 0.1, 1
 
-        BoxLayout:
-            orientation: 'vertical'
-            size_hint_y: 0.4 # Ocupa 40% da altura restante
-            spacing: dp(10)
-            padding: dp(10)
-            canvas.before:
-                Color:
-                    rgba: 1, 1, 1, 0.1 # Fundo levemente transparente para os campos
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-
-            Label:
-                text: 'Tipo de Alimento:'
-                halign: 'left'
-                text_size: self.width - dp(20), None # Ajusta texto ao padding
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
                 size_hint_y: None
-                height: dp(25)
-                color: 1, 1, 1, 1
-                font_size: '16sp'
+                height: self.minimum_height
+                spacing: dp(15)
 
-            Spinner:
-                id: food_category_spinner
-                text: 'Selecione a categoria'
-                values: ['Frutas', 'Vegetais', 'Restos de Refeição', 'Laticínios', 'Carnes', 'Grãos', 'Outros Orgânicos']
-                size_hint_y: None
-                height: dp(50)
-                background_normal: ''
-                background_color: 0.5, 0.7, 0.4, 1 # Verde claro para o spinner
-                color: 0, 0, 0, 1 # Texto preto
-                font_size: '16sp'
+                Label:
+                    text: 'Categoria do Alimento:'
+                    halign: 'left'
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: dp(30)
+                Spinner:
+                    id: food_category_spinner
+                    text: 'Selecione a categoria'
+                    values: ['Frutas', 'Vegetais', 'Carnes', 'Laticínios', 'Grãos', 'Outros']
+                    size_hint_y: None
+                    height: dp(40)
 
-            Label:
-                text: 'Peso (kg):'
-                halign: 'left'
-                text_size: self.width - dp(20), None
-                size_hint_y: None
-                height: dp(25)
-                color: 1, 1, 1, 1
-                font_size: '16sp'
+                Label:
+                    text: 'Peso do Descarte (kg):'
+                    halign: 'left'
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: dp(30)
+                TextInput:
+                    id: weight_input
+                    hint_text: 'Digite o peso em kg'
+                    input_type: 'number'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(40)
 
-            TextInput:
-                id: weight_input
-                hint_text: 'Ex: 2.5'
-                input_filter: 'float'
-                size_hint_y: None
-                height: dp(50)
-                multiline: False
-                background_color: 1, 1, 1, 0.9
-                foreground_color: 0.1, 0.1, 0.1, 1
-                padding: [dp(10), dp(10), dp(10), dp(10)]
-                font_size: '16sp'
+                Button:
+                    text: 'Adicionar Mídia (Opcional)'
+                    size_hint_y: None
+                    height: dp(50)
+                    on_release: root.add_media()
+                    background_color: 0.1, 0.5, 0.8, 1
 
-        Button:
-            text: 'Adicionar Foto/Vídeo'
-            size_hint_y: None
-            height: dp(55)
-            on_release: root.add_media()
-            background_normal: ''
-            background_color: 0.2, 0.5, 0.4, 1 # Verde médio
-            color: 1, 1, 1, 1
-            font_size: '17sp'
-            # Para um ícone, você pode usar:
-            # text: '[font=assets/fonts/FontAwesome.ttf]\uf030[/font] Adicionar Foto/Vídeo'
-            # markup: True # Necessário se usar ícones de fonte
+                Button:
+                    text: 'Registrar Descarte'
+                    size_hint_y: None
+                    height: dp(50)
+                    on_release: root.save_waste()
+                    background_color: 0.2, 0.6, 0.2, 1
 
-        Button:
-            text: 'Salvar Descarte'
-            size_hint_y: None
-            height: dp(65)
-            on_release: root.save_waste()
-            background_normal: ''
-            background_color: 0.1, 0.4, 0.3, 1 # Verde escuro para ação principal
-            color: 1, 1, 1, 1
-            font_size: '18sp'
-            bold: True
-
-        Widget: # Espaçador
-            size_hint_y: 0.1
-
-        # Barra de navegação inferior (replicada em todas as telas para navegação)
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: None
-            height: dp(60)
-            padding: dp(5)
-            spacing: dp(5)
-            pos_hint: {'center_x': 0.5}
-
-            canvas.before:
-                Color:
-                    rgba: 0.15, 0.15, 0.15, 1
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-
-            Button:
-                text: 'Início'
-                on_release: app.root.current = 'login'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Registrar'
-                on_release: app.root.current = 'register_waste'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 0.8, 1, 0.8, 1 # Cor de destaque para tela ativa
-                font_size: '12sp'
-            Button:
-                text: 'Estatísticas'
-                on_release: app.root.current = 'biogas_estimation'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Relatórios'
-                on_release: app.root.current = 'reports'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Mídia'
-                on_release: root.show_popup('Em Breve', 'A tela de mídia está em desenvolvimento!')
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Configurações'
-                on_release: root.show_popup('Em Breve', 'A tela de configurações está em desenvolvimento!')
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
+                # --- Botão para Voltar ao Menu Principal ---
+                Button:
+                    text: 'Voltar ao Menu Principal'
+                    size_hint_y: None
+                    height: dp(50)
+                    on_release: app.root.current = 'main_menu' # Aponta para o novo menu
+                    background_color: 0.7, 0.2, 0.2, 1

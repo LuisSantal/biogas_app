@@ -24,12 +24,12 @@ source.include_patterns = assets/*,kv/*,media/*
 version = 0.1
 
 # (list) Application requirements
-requirements = python3,kivy,plyer
-# Se você for usar 'kivy_garden.graph' para os gráficos, descomente a linha abaixo:
+requirements = python3==3.11.9,kivy==2.2.1,plyer,requests
 # requirements = python3,kivy,plyer,kivy_garden.graph
 
 # (str) Icon of the application
-icon.filename = assets/images/app_icon.png
+icon.filename = assets/images/app_icon.png51
+
 
 # (list) Supported orientations
 orientation = portrait
@@ -41,7 +41,7 @@ fullscreen = 0
 android.permissions = INTERNET,CAMERA,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 
 # (int) Target Android API, should be as high as possible.
-android.api = 33
+android.api = 30
 
 # (int) Minimum API your APK / AAB will support.
 android.minapi = 21

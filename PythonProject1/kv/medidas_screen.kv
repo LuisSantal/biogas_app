@@ -1,0 +1,111 @@
+#:kivy 1.11.1
+
+<MedidasScreen>:
+    name: 'medidas'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(10)
+        canvas.before:
+            Color:
+                rgba: 0.8, 0.9, 0.8, 1 # Um verde claro para a tela de medidas
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label: # Este Label é um widget filho válido do BoxLayout
+            text: 'Registro de Medidas de Gás e Matéria Orgânica'
+            font_size: '20sp'
+            size_hint_y: None
+            height: dp(50)
+            color: 0.1, 0.5, 0.1, 1 # Green color
+
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(15)
+
+                GridLayout:
+                    cols: 1
+                    spacing: dp(10)
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    Label:
+                        text: 'Metano (CH₄) - %'
+                        halign: 'left'
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: dp(30)
+                    TextInput:
+                        id: methane_input
+                        hint_text: 'Ex: 60.5'
+                        input_type: 'number'
+                        multiline: False
+                        size_hint_y: None
+                        height: dp(40)
+
+                    Label:
+                        text: 'Dióxido de Carbono (CO₂) - %'
+                        halign: 'left'
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: dp(30)
+                    TextInput:
+                        id: co2_input
+                        hint_text: 'Ex: 35.0'
+                        input_type: 'number'
+                        multiline: False
+                        size_hint_y: None
+                        height: dp(40)
+
+                    Label:
+                        text: 'Gás Sulfídrico (H₂S) - ppm'
+                        halign: 'left'
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: dp(30)
+                    TextInput:
+                        id: h2s_input
+                        hint_text: 'Ex: 100'
+                        input_type: 'number'
+                        multiline: False
+                        size_hint_y: None
+                        height: dp(40)
+
+                    Label:
+                        text: 'Sólidos Voláteis (VS) - % do total de sólidos'
+                        halign: 'left'
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: dp(30)
+                    TextInput:
+                        id: vs_input
+                        hint_text: 'Ex: 70.0'
+                        input_type: 'number'
+                        multiline: False
+                        size_hint_y: None
+                        height: dp(40)
+
+                Button:
+                    text: 'Registrar Medidas'
+                    size_hint_y: None
+                    height: dp(50)
+                    on_release: root.save_measurements()
+                    background_color: 0.2, 0.6, 0.2, 1 # Green button
+
+                Button:
+                    text: 'Exportar Medidas para CSV'
+                    size_hint_y: None
+                    height: dp(50)
+                    on_release: root.export_measurements_to_csv()
+                    background_color: 0.1, 0.4, 0.7, 1 # Blue button
+
+                Button:
+                    text: 'Voltar ao Menu Principal'
+                    size_hint_y: None
+                    height: dp(50)
+                    on_release: app.root.current = 'main_menu'
+                    background_color: 0.7, 0.2, 0.2, 1 # Red button

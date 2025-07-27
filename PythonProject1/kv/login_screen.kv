@@ -1,4 +1,4 @@
-# kv/login_screen.kv
+#:kivy 1.11.1
 
 <LoginScreen>:
     name: 'login' # Define o nome da tela para o ScreenManager
@@ -86,63 +86,3 @@
         # Espaço flexível para empurrar o conteúdo para cima, mantendo o logo visível
         Widget:
             size_hint_y: 0.2
-
-        # Barra de navegação inferior (exemplo simples com botões, pode ser em uma classe RootWidget pai)
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: None
-            height: dp(60)
-            padding: dp(5)
-            spacing: dp(5)
-            pos_hint: {'center_x': 0.5} # Centraliza a barra
-
-            canvas.before:
-                Color:
-                    rgba: 0.15, 0.15, 0.15, 1 # Fundo da barra de navegação
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-
-            Button:
-                text: 'Início'
-                on_release: app.root.current = 'login' # Volta para login ou tela inicial real
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Registrar'
-                on_release: app.root.current = 'register_waste'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Estatísticas'
-                on_release: app.root.current = 'biogas_estimation'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Relatórios' # Nomeando diferente para refletir ReportsScreen
-                on_release: app.root.current = 'reports'
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            # Mídia e Configurações seriam outras telas
-            Button:
-                text: 'Mídia'
-                on_release: root.show_popup('Em Breve', 'A tela de mídia está em desenvolvimento!')
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'
-            Button:
-                text: 'Configurações'
-                on_release: root.show_popup('Em Breve', 'A tela de configurações está em desenvolvimento!')
-                background_normal: ''
-                background_color: 0, 0, 0, 0
-                color: 1, 1, 1, 1
-                font_size: '12sp'

@@ -1,0 +1,60 @@
+#:kivy 1.11.1
+
+<MainMenuScreen>:
+    name: 'main_menu'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(30)
+        spacing: dp(20)
+
+        Label:
+            text: 'Menu Principal'
+            font_size: '24sp'
+            size_hint_y: None
+            height: dp(60)
+            halign: 'center'
+            valign: 'middle'
+            color: 0.1, 0.5, 0.1, 1 # Verde para destaque
+
+        GridLayout:
+            cols: 1
+            spacing: dp(15)
+            padding: dp(10)
+
+            Button:
+                text: 'Registrar Descarte'
+                size_hint_y: None
+                height: dp(60)
+                on_release: app.root.current = 'register_waste'
+                background_color: 0.2, 0.6, 0.2, 1
+
+            Button:
+                text: 'Estimativa de Biogás'
+                size_hint_y: None
+                height: dp(60)
+                on_release: app.root.current = 'biogas_estimation'
+                background_color: 0.1, 0.4, 0.7, 1
+
+            Button:
+                text: 'Relatórios'
+                size_hint_y: None
+                height: dp(60)
+                on_release: app.root.current = 'reports'
+                background_color: 0.8, 0.5, 0.1, 1
+
+            Button:
+                text: 'Registrar Medidas de Gás'
+                size_hint_y: None
+                height: dp(60)
+                on_release: app.root.current = 'medidas'
+                background_color: 0.5, 0.2, 0.8, 1 # Uma nova cor para a nova tela
+
+        Widget: # Espaçador flexível para empurrar o botão Sair para baixo
+            size_hint_y: 0.5
+
+        Button:
+            text: 'Sair do Aplicativo'
+            size_hint_y: None
+            height: dp(50)
+            on_release: app.stop() # Finaliza o aplicativo
+            background_color: 0.7, 0.2, 0.2, 1 # Botão vermelho de sair
