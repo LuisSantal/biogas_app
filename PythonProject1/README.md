@@ -21,6 +21,7 @@ Este aplicativo móvel multiplataforma, "Biogás nas Escolas", visa promover a e
 ## Estrutura do Projeto
 biogas_app/
 ├── .venv/                  # Ambiente virtual Python
+
 ├── media/                  # Fotos e vídeos dos usuários
 ├── assets/                 # Imagens, fontes e outros recursos estáticos
 │   ├── images/
