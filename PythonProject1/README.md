@@ -20,22 +20,37 @@ Este aplicativo móvel multiplataforma, "Biogás nas Escolas", visa promover a e
 
 ## Estrutura do Projeto
 biogas_app/
+
 ├── .venv/                  # Ambiente virtual Python
 
 ├── media/                  # Fotos e vídeos dos usuários
-├── assets/                 # Imagens, fontes e outros recursos estáticos
+
+├── assets/  # Imagens, fontes e outros recursos estáticos
+
 │   ├── images/
+
 │   └── fonts/
+
 ├── kv/                     # Arquivos de design de UI (Kivy Language)
+
 │   ├── login_screen.kv
+
 │   ├── register_waste_screen.kv
+
 │   ├── biogas_estimation_screen.kv
+
 │   ├── reports_screen.kv
+
 ├── main.py                 # Lógica principal e execução do aplicativo
+
 ├── biogas_app.db           # Banco de dados SQLite (gerado pelo app)
+
 ├── README.md               # Este arquivo
+
 ├── requirements.txt        # Dependências do projeto Python
+
 └── .gitignore              # Arquivo para o Git ignorar diretórios/arquivos
+
 ## Como Configurar e Executar
 
 ### Pré-requisitos
