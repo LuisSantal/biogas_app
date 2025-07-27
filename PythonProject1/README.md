@@ -78,3 +78,5 @@ biogas_app/
 Após a instalação das dependências e com o ambiente virtual ativado:
 ```bash
 python main.py
+### token de Acesso :
+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
