@@ -1,21 +1,21 @@
 # App Biogás nas Escolas
 
 ## Descrição do Projeto
-[cite_start]Este aplicativo móvel multiplataforma, "Biogás nas Escolas", visa promover a educação ambiental e a sustentabilidade no ambiente escolar[cite: 23]. [cite_start]Ele permite o registro, acompanhamento e análise dos resíduos orgânicos gerados nas cozinhas das escolas e sua destinação para biodigestores de baixo custo[cite: 24]. [cite_start]O projeto foi desenvolvido com o objetivo de criar uma ferramenta tecnológica educativa que auxilie escolas no controle do descarte de alimentos, possibilitando a mensuração da produção de biogás, a redução da emissão de gases de efeito estufa (GEE) e o impacto ambiental positivo[cite: 26].
+Este aplicativo móvel multiplataforma, "Biogás nas Escolas", visa promover a educação ambiental e a sustentabilidade no ambiente escolar.Ele permite o registro, acompanhamento e análise dos resíduos orgânicos gerados nas cozinhas das escolas e sua destinação para biodigestores de baixo custo. O projeto foi desenvolvido com o objetivo de criar uma ferramenta tecnológica educativa que auxilie escolas no controle do descarte de alimentos, possibilitando a mensuração da produção de biogás, a redução da emissão de gases de efeito estufa (GEE) e o impacto ambiental positivo.
 
 ## Funcionalidades Principais
-* [cite_start]**Registro de Resíduos**: Permite registrar os tipos e quantidades de alimentos descartados[cite: 28].
-* [cite_start]**Estimativa de Biogás**: Calcula a estimativa da produção de biogás com base nos resíduos[cite: 29].
-* [cite_start]**Estatísticas Ambientais**: Apresenta estatísticas sobre resíduos desviados de aterros sanitários e a redução de GEE[cite: 30, 31].
-* [cite_start]**Armazenamento Local**: Todos os dados são armazenados localmente no dispositivo (SQLite), sem necessidade de conexão com servidor[cite: 33].
+* **Registro de Resíduos**: Permite registrar os tipos e quantidades de alimentos descartados[cite: 28].
+* **Estimativa de Biogás**: Calcula a estimativa da produção de biogás com base nos resíduos[cite: 29].
+* **Estatísticas Ambientais**: Apresenta estatísticas sobre resíduos desviados de aterros sanitários e a redução de GEE[cite: 30, 31].
+* **Armazenamento Local**: Todos os dados são armazenados localmente no dispositivo (SQLite), sem necessidade de conexão com servidor[cite: 33].
 * **Gerenciamento de Usuários**: Cadastro e login de professores, alunos e gestores escolares.
 * **Mídia**: Funcionalidade para upload e visualização de fotos e vídeos associados aos registros.
 
 ## Tecnologias Utilizadas
-* [cite_start]**Linguagem**: Python [cite: 40]
-* [cite_start]**Framework**: Kivy (multiplataforma) [cite: 41]
-* [cite_start]**Banco de Dados**: SQLite (para armazenamento local) [cite: 41]
-* [cite_start]**Compatibilidade**: Android e iOS [cite: 41]
+* **Linguagem**: Python [cite: 40]
+* **Framework**: Kivy (multiplataforma) [cite: 41]
+* **Banco de Dados**: SQLite (para armazenamento local) [cite: 41]
+* **Compatibilidade**: Android e iOS [cite: 41]
 * **Ferramentas Adicionais**: Plyer (para acesso a recursos do dispositivo como câmera/galeria).
 
 ## Estrutura do Projeto
