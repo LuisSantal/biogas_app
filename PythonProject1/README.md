@@ -4,18 +4,18 @@
 Este aplicativo móvel multiplataforma, "Biogás nas Escolas", visa promover a educação ambiental e a sustentabilidade no ambiente escolar.Ele permite o registro, acompanhamento e análise dos resíduos orgânicos gerados nas cozinhas das escolas e sua destinação para biodigestores de baixo custo. O projeto foi desenvolvido com o objetivo de criar uma ferramenta tecnológica educativa que auxilie escolas no controle do descarte de alimentos, possibilitando a mensuração da produção de biogás, a redução da emissão de gases de efeito estufa (GEE) e o impacto ambiental positivo.
 
 ## Funcionalidades Principais
-* **Registro de Resíduos**: Permite registrar os tipos e quantidades de alimentos descartados[cite: 28].
-* **Estimativa de Biogás**: Calcula a estimativa da produção de biogás com base nos resíduos[cite: 29].
-* **Estatísticas Ambientais**: Apresenta estatísticas sobre resíduos desviados de aterros sanitários e a redução de GEE[cite: 30, 31].
-* **Armazenamento Local**: Todos os dados são armazenados localmente no dispositivo (SQLite), sem necessidade de conexão com servidor[cite: 33].
+* **Registro de Resíduos**: Permite registrar os tipos e quantidades de alimentos descartados.
+* **Estimativa de Biogás**: Calcula a estimativa da produção de biogás com base nos resíduos.
+* **Estatísticas Ambientais**: Apresenta estatísticas sobre resíduos desviados de aterros sanitários e a redução de GEE.
+* **Armazenamento Local**: Todos os dados são armazenados localmente no dispositivo (SQLite), sem necessidade de conexão com servidor.
 * **Gerenciamento de Usuários**: Cadastro e login de professores, alunos e gestores escolares.
 * **Mídia**: Funcionalidade para upload e visualização de fotos e vídeos associados aos registros.
 
 ## Tecnologias Utilizadas
-* **Linguagem**: Python [cite: 40]
-* **Framework**: Kivy (multiplataforma) [cite: 41]
-* **Banco de Dados**: SQLite (para armazenamento local) [cite: 41]
-* **Compatibilidade**: Android e iOS [cite: 41]
+* **Linguagem**: Python 
+* **Framework**: Kivy (multiplataforma) 
+* **Banco de Dados**: SQLite (para armazenamento local) 
+* **Compatibilidade**: Android e iOS 
 * **Ferramentas Adicionais**: Plyer (para acesso a recursos do dispositivo como câmera/galeria).
 
 ## Estrutura do Projeto
@@ -80,3 +80,4 @@ Após a instalação das dependências e com o ambiente virtual ativado:
 python main.py
 ### token de Acesso :
 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
+
