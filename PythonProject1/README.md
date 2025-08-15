@@ -81,3 +81,30 @@ python main.py
 ### token de Acesso :
 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
 
+# Build Android APK
+
+## Solução dos problemas de build
+
+Este projeto foi ajustado para permitir a compilação do APK Android usando Buildozer, Kivy e Python 3.9. Foram realizadas as seguintes modificações para solucionar incompatibilidades e erros:
+
+- Migração do ambiente para Python 3.9 e Buildozer 1.3.0
+- Patch nos recipes locais de Kivy e Pyjnius para compatibilidade
+- Remoção do método `__long__` e duplicatas em `weakproxy.pyx` (Kivy)
+- Restauração do arquivo `config.pxi` em `local_recipes/kivy/kivy/include/`
+- Correção do uso do pip com `--user` no Buildozer
+- Configuração do Java 17 como JAVA_HOME
+- Limpeza profunda dos artefatos de build
+- Build final realizado com sucesso
+
+## Localização do APK
+
+O APK gerado está disponível em:
+
+- [`bin/biogasapp-0.1-arm64-v8a_armeabi-v7a-debug.apk`](bin/biogasapp-0.1-arm64-v8a_armeabi-v7a-debug.apk)
+
+Você pode instalar este APK em seu dispositivo Android para testar o aplicativo.
+
+## Observações
+
+Essas modificações garantem compatibilidade total com o ambiente Android e resolvem os erros de build relacionados a versões de Python, Java e dependências nativas.
+

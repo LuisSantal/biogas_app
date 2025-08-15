@@ -31,11 +31,17 @@ p4a_hook = p4a_hook.py
 android.p4a_recipes_exclude_arch_flags = libffi
 
 # --- Ajustes para pyjnius e compatibilidade Python 3 ---
-custom_recipes = ./local_recipes
 p4a_patches = local_recipes/pyjnius/pyjnius_python3_long_fix.patch,local_recipes/pyjnius/genericndkbuild_jnienv_getter.patch
+
+# Forçar python-for-android a usar Python 3.9
+android.python3 = /workspaces/biogas_app/PythonProject1/venv_buildozer_py39/bin/python3.9
+android.python3_path = /workspaces/biogas_app/PythonProject1/venv_buildozer_py39/bin/python3.9
+android.build_python = /workspaces/biogas_app/PythonProject1/venv_buildozer_py39/bin/python3.9
 
 [buildozer]
 log_level = 2
 warn_on_root = 1
+
+python3 = /workspaces/biogas_app/PythonProject1/venv_buildozer_py39/bin/python3.9
 
 
