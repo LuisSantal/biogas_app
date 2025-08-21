@@ -17,12 +17,12 @@ import os
 # Config.set('graphics', 'resizable', True)
 
 # Carrega os arquivos .kv da pasta 'kv'.
-Builder.load_file('kv/login_screen.kv')
-Builder.load_file('kv/main_menu_screen.kv') # Carrega a nova tela de menu
-Builder.load_file('kv/register_waste_screen.kv')
-Builder.load_file('kv/biogas_estimation_screen.kv')
-Builder.load_file('kv/reports_screen.kv')
-Builder.load_file('kv/medidas_screen.kv')
+Builder.load_file('PythonProject1/kv/login_screen.kv')
+Builder.load_file('PythonProject1/kv/main_menu_screen.kv') # Carrega a nova tela de menu
+Builder.load_file('PythonProject1/kv/register_waste_screen.kv')
+Builder.load_file('PythonProject1/kv/biogas_estimation_screen.kv')
+Builder.load_file('PythonProject1/kv/reports_screen.kv')
+Builder.load_file('PythonProject1/kv/medidas_screen.kv')
 
 # --- Classes das Telas (Python) ---
 
