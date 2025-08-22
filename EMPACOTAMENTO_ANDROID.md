@@ -62,7 +62,7 @@ Após a compilação bem-sucedida, o APK estará em:
 O arquivo `buildozer.spec` já está configurado com:
 - ✅ Nome do pacote: `br.edu.unila.biogasapp`
 - ✅ Permissões Android: Internet, Câmera, Armazenamento
-- ✅ Dependências: python3, kivy==2.3.1, plyer, sqlite3
+- ✅ Dependências: python3, kivy==2.2.1, plyer, sqlite3
 - ✅ Ícone da aplicação
 - ✅ Orientação portrait
 
