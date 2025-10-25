@@ -1,7 +1,13 @@
 # App Biogás nas Escolas
 
 ## Descrição do Projeto
-Este aplicativo móvel multiplataforma, "Biogás nas Escolas", visa promover a educação ambiental e a sustentabilidade no ambiente escolar.Ele permite o registro, acompanhamento e análise dos resíduos orgânicos gerados nas cozinhas das escolas e sua destinação para biodigestores de baixo custo. O projeto foi desenvolvido com o objetivo de criar uma ferramenta tecnológica educativa que auxilie escolas no controle do descarte de alimentos, possibilitando a mensuração da produção de biogás, a redução da emissão de gases de efeito estufa (GEE) e o impacto ambiental positivo.
+O aplicativo móvel multiplataforma "Biogás nas Escolas" é uma ferramenta tecnológica desenvolvida para auxiliar a operação de biodigestores em instituições de ensino. Ele foi concebido em paralelo ao projeto de extensão denominado "Consolidação e Ampliação de Projetos Educacionais para Geração de Biogás e Biofertilizantes utilizando Resíduos Orgânicos e alimentando pequenos Biodigestores em Colégios Estaduais do Paraná".
+
+O objetivo central do App é promover a educação ambiental e a sustentabilidade no ambiente escolar, transformando o descarte de resíduos em uma atividade educativa e mensurável.
+
+A ferramenta permite o registro, acompanhamento e análise dos resíduos orgânicos gerados nas cozinhas das escolas e sua destinação para biodigestores de baixo custo.
+
+O projeto foi desenvolvido para oferecer suporte às escolas no controle do descarte de alimentos, possibilitando a mensuração da produção de biogás, a redução da emissão de gases de efeito estufa (GEE) e a demonstração clara do impacto ambiental positivo alcançado.
 
 ## Funcionalidades Principais
 * **Registro de Resíduos**: Permite registrar os tipos e quantidades de alimentos descartados.
@@ -123,4 +129,5 @@ Se tudo correr bem, o APK estará disponível no diretório `bin/`.
 
 ### Observações sobre a Compilação
 Este projeto foi ajustado para garantir a compatibilidade com o ambiente Android, resolvendo erros de build relacionados a versões de Python, Java e dependências nativas. As configurações no arquivo `buildozer.spec` e os patches aplicados localmente são resultado desse processo.
+
 
