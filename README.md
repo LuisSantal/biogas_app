@@ -114,7 +114,7 @@ buildozer android clean
 ```
 
 #### 4.2. Compilar o APK de Debug
-Execute o comando na **raiz do projeto**. A primeira compilação será longa, pois o Buildozer baixará o Android NDK e outras dependências.
+Execute o comando na **raiz do projeto**. A primeira compilação seria um pouco longa, pois o Buildozer  vai baixar o Android NDK e outras dependências.
 ```sh
 buildozer android debug
 ```
@@ -123,3 +123,4 @@ Se tudo correr bem, o APK estará disponível no diretório `bin/`.
 
 ### Observações sobre a Compilação
 Este projeto foi ajustado para garantir a compatibilidade com o ambiente Android, resolvendo erros de build relacionados a versões de Python, Java e dependências nativas. As configurações no arquivo `buildozer.spec` e os patches aplicados localmente são resultado desse processo.
+
