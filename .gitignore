@@ -1,69 +1,61 @@
+# =============================================================================
+# IDE & OS Specific
+# =============================================================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# =============================================================================
 # Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# =============================================================================
 
 # Virtual environments
 .venv/
 env/
 venv/
-ENV/
-env.bak/
-venv.bak/
+*/venv/
 
-# Database
-*.db
-*.sqlite3
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
 
-# Build artifacts
+# Distribution / packaging
+build/
+dist/
+eggs/
+*.egg-info/
+
+# Test & coverage reports
+.coverage
+.pytest_cache/
+.tox/
+
+# =============================================================================
+# Project Specific
+# =============================================================================
+
+# Kivy / Buildozer build artifacts
+.buildozer/
 bin/
 *.apk
 *.aab
+*.kv.py
 
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Database files
+# The application uses a biogas_app.db file.
+# If this file should be versioned, remove or comment out the line below.
+*.db
+*.sqlite3
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# User-generated media (inside the source directory)
+PythonProject1/media/
 
-# Logs
-logs/
+# Temporary archives for Colab build
+*.zip
+*.tar.gz
 *.log
-
-# Temporary files
-tmp/
-temp/
-
-# Project specific
-biogas_app_colab.zip
-biogas_app_colab_final.zip

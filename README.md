@@ -1,42 +1,95 @@
-# Biogás App - Guia de Compilação para Android
+# App Biogás nas Escolas
 
-Este guia documenta os passos necessários para compilar o projeto Biogás App em um APK para Android a partir de um ambiente WSL (Windows Subsystem for Linux).
+## Descrição do Projeto
+Este aplicativo móvel multiplataforma, "Biogás nas Escolas", visa promover a educação ambiental e a sustentabilidade no ambiente escolar.Ele permite o registro, acompanhamento e análise dos resíduos orgânicos gerados nas cozinhas das escolas e sua destinação para biodigestores de baixo custo. O projeto foi desenvolvido com o objetivo de criar uma ferramenta tecnológica educativa que auxilie escolas no controle do descarte de alimentos, possibilitando a mensuração da produção de biogás, a redução da emissão de gases de efeito estufa (GEE) e o impacto ambiental positivo.
 
-## 1. Configuração do Ambiente WSL (Ubuntu)
+## Funcionalidades Principais
+* **Registro de Resíduos**: Permite registrar os tipos e quantidades de alimentos descartados.
+* **Estimativa de Biogás**: Calcula a estimativa da produção de biogás com base nos resíduos.
+* **Estatísticas Ambientais**: Apresenta estatísticas sobre resíduos desviados de aterros sanitários e a redução de GEE.
+* **Armazenamento Local**: Todos os dados são armazenados localmente no dispositivo (SQLite), sem necessidade de conexão com servidor.
+* **Gerenciamento de Usuários**: Cadastro e login de professores, alunos e gestores escolares.
+* **Mídia**: Funcionalidade para upload e visualização de fotos e vídeos associados aos registros.
 
-O ambiente de compilação pode ser sensível a pacotes de desenvolvimento instalados no sistema. Para garantir um processo limpo, remova as bibliotecas de desenvolvimento do SDL2 que podem causar conflitos:
+## Tecnologias Utilizadas
+* **Linguagem**: Python 
+* **Framework**: Kivy (multiplataforma) 
+* **Banco de Dados**: SQLite (para armazenamento local) 
+* **Compatibilidade**: Android e iOS 
+* **Ferramentas Adicionais**: Plyer (para acesso a recursos do dispositivo como câmera/galeria).
 
+## Estrutura do Projeto (Simplificada)
+```
+biogas_app/
+├── PythonProject1/           # Código fonte do aplicativo
+│   ├── assets/               # Imagens, fontes, etc.
+│   ├── kv/                   # Arquivos de design da UI (Kivy)
+│   ├── main.py               # Lógica principal do app
+│   └── requirements.txt      # Dependências Python do app
+├── buildozer.spec            # Especificações de compilação do Buildozer
+├── README.md                 # Este arquivo
+└── .gitignore                # Arquivos ignorados pelo Git
+```
+
+## Como Configurar e Executar (Localmente)
+
+### Pré-requisitos
+* Python 3.x instalado
+
+### Configuração do Ambiente
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/LuisSantal/biogas_app.git
+    cd biogas_app/PythonProject1
+    ```
+2.  **Crie e ative o ambiente virtual:**
+    ```bash
+    python -m venv venv
+    # No Windows:
+    venv\Scripts\activate
+    # No macOS/Linux:
+    source venv/bin/activate
+    ```
+3.  **Instale as dependências:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+### Executando o Aplicativo
+Após a instalação das dependências e com o ambiente virtual ativado:
+```bash
+python main.py
+```
+
+## Como Compilar o APK para Android
+
+Este guia documenta os passos para compilar o projeto em um APK a partir de um ambiente WSL (Windows Subsystem for Linux).
+
+### 1. Configuração do Ambiente WSL (Ubuntu)
+Para evitar conflitos, remova bibliotecas de desenvolvimento do SDL2 que possam estar instaladas:
 ```sh
 sudo apt-get remove libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libfreetype6-dev libharfbuzz-dev
 ```
 
-## 2. Configuração do Java Development Kit (JDK)
+### 2. Configuração do Java Development Kit (JDK)
+O Gradle exige uma versão específica do Java.
 
-O Android Gradle Plugin exige uma versão específica do Java.
-
-### 2.1. Instale o OpenJDK 17
+#### 2.1. Instale o OpenJDK 17
 ```sh
 sudo apt-get update
 sudo apt-get install openjdk-17-jdk
 ```
 
-### 2.2. Defina o JDK 17 como Padrão
-Use o seguinte comando para configurar o Java 17 como a versão padrão do sistema:
+#### 2.2. Defina o JDK 17 como Padrão
 ```sh
 sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
 ```
+Confirme a versão com `java -version`.
 
-### 2.3. Verifique a Versão
-Confirme se a versão padrão foi alterada corretamente:
-```sh
-java -version
-```
-A saída deve indicar "openjdk version "17..."".
+### 3. Preparação do Projeto para Compilação
+A partir da **raiz do projeto** (`biogas_app`):
 
-## 3. Preparação do Projeto
-
-### 3.1. Crie e Ative um Ambiente Virtual
-É crucial isolar as dependências do projeto. A partir da raiz do projeto (`PythonProject1`), execute:
+#### 3.1. Crie e Ative um Ambiente Virtual para o Buildozer
 ```sh
 # Criar o ambiente virtual
 python3 -m venv venv_buildozer
@@ -44,51 +97,29 @@ python3 -m venv venv_buildozer
 # Ativar o ambiente virtual
 source venv_buildozer/bin/activate
 ```
-**Lembre-se:** Sempre ative o ambiente virtual antes de executar qualquer comando de compilação.
 
-### 3.2. Instale as Dependências Python
-Com o ambiente virtual ativo, instale o Buildozer e suas dependências de compilação:
+#### 3.2. Instale o Buildozer
+Com o ambiente virtual ativo, instale o Buildozer e o Cython (versão < 3.0 é crucial):
 ```sh
-pip install buildozer "cython<3.0"
-```
-Usar uma versão do Cython anterior à 3.0 é fundamental para garantir a compatibilidade com as receitas do Kivy.
-
-## 4. Configuração do `buildozer.spec`
-
-O arquivo `buildozer.spec` precisa ser ajustado para incluir as dependências corretas e excluir arquivos desnecessários do APK.
-
-As linhas mais importantes a garantir no seu `buildozer.spec` são:
-
-```ini
-# (Na seção [app])
-# Lista de requisitos para o python-for-android
-requirements = python3,kivy==2.3.0,sqlite3,plyer,pyjnius
-
-# Exclui diretórios para não empacotá-los no APK
-source.exclude_dirs = .buildozer,bin,venv,venv_buildozer,venv_buildozer_py39,dist,tests,docs,examples
-source.exclude_patterns = *.pyc,*.swp,venv*/*
+pip install "buildozer>=1.5.0" "cython<3.0"
 ```
 
-## 5. Compilação do APK
+### 4. Compilação do APK
+Com tudo configurado, inicie a compilação.
 
-Com tudo configurado, você pode iniciar o processo de compilação.
-
-### 5.1. Limpeza (Opcional, recomendado na primeira vez)
-Se você já teve tentativas de compilação que falharam, é uma boa prática limpar os builds antigos:
+#### 4.1. Limpeza (Opcional, mas recomendado)
+Para limpar builds antigos:
 ```sh
 buildozer android clean
 ```
 
-### 5.2. Compilar o APK de Debug
-Execute o comando principal. Na primeira vez, este processo será **muito longo**, pois o Buildozer irá baixar o Android NDK e compilar todas as receitas. Nas próximas vezes, será significativamente mais rápido.
+#### 4.2. Compilar o APK de Debug
+Execute o comando na **raiz do projeto**. A primeira compilação será longa, pois o Buildozer baixará o Android NDK e outras dependências.
 ```sh
 buildozer android debug
 ```
 
-### 5.3. Encontre seu APK
-Se tudo correr bem, a compilação terminará com a mensagem:
-`# APK ... available in the bin directory`
+Se tudo correr bem, o APK estará disponível no diretório `bin/`.
 
-O seu arquivo `.apk` estará localizado em: `bin/biogasapp-0.1-arm64-v8a_armeabi-v7a-debug.apk`.
-
-Agora você pode transferir este arquivo para o seu dispositivo Android e instalá-lo.
+### Observações sobre a Compilação
+Este projeto foi ajustado para garantir a compatibilidade com o ambiente Android, resolvendo erros de build relacionados a versões de Python, Java e dependências nativas. As configurações no arquivo `buildozer.spec` e os patches aplicados localmente são resultado desse processo.
